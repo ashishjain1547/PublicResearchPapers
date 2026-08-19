@@ -1,0 +1,372 @@
+<div class="customOuterWrapper">
+  <style>
+    div.customOuterWrapper {
+      --ink: #1c2333;
+      --ink-soft: #3c4358;
+      --parchment: #f2ede2;
+      --parchment-dark: #e6dfd0;
+      --gold: #a3793f;
+      --gold-deep: #7c5a2b;
+      --red-tab: #7a3226;
+      --good: #2f6b4f;
+      --bad: #8a3324;
+      --none: #6b6456;
+      font-family: 'Iowan Old Style', 'Palatino Linotype', Georgia, 'Times New Roman', serif;
+      background: var(--parchment);
+      color: var(--ink);
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 56px 48px 40px;
+      line-height: 1.65;
+      border: 1px solid var(--parchment-dark);
+      box-shadow: 0 0 0 6px #fff, 0 8px 30px rgba(28,35,51,0.15);
+    }
+
+    div.customOuterWrapper .customCaseHeader {
+      border-bottom: 3px double var(--gold-deep);
+      padding-bottom: 28px;
+      margin-bottom: 44px;
+    }
+
+    div.customOuterWrapper .customCaseNumber {
+      font-family: 'Courier New', monospace;
+      font-size: 12px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold-deep);
+      margin-bottom: 14px;
+    }
+
+    div.customOuterWrapper .customCaseTitle {
+      font-size: 34px;
+      font-weight: 700;
+      line-height: 1.2;
+      margin: 0 0 22px 0;
+      color: var(--ink);
+      letter-spacing: -0.01em;
+    }
+
+    div.customOuterWrapper .customCaseMeta {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      font-size: 14.5px;
+      color: var(--ink-soft);
+      margin-bottom: 20px;
+    }
+
+    div.customOuterWrapper .customCaseMetaRow span {
+      display: inline-block;
+      min-width: 84px;
+      font-family: 'Courier New', monospace;
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--gold-deep);
+      margin-right: 10px;
+    }
+
+    div.customOuterWrapper .customCaseIntro {
+      font-size: 16px;
+      font-style: italic;
+      color: var(--ink-soft);
+      margin: 22px 0 0 0;
+      max-width: 68ch;
+    }
+
+    div.customOuterWrapper .customExhibit {
+      position: relative;
+      margin: 0 0 46px 0;
+      padding: 6px 0 6px 26px;
+      border-left: 2px solid var(--parchment-dark);
+    }
+
+    div.customOuterWrapper .customExhibitTab {
+      display: inline-block;
+      background: var(--red-tab);
+      color: #f2ede2;
+      font-family: 'Courier New', monospace;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 0 3px 3px 0;
+      margin-left: -28px;
+      margin-bottom: 14px;
+      box-shadow: 2px 2px 0 rgba(28,35,51,0.15);
+    }
+
+    div.customOuterWrapper .customExhibit h2 {
+      font-size: 23px;
+      margin: 0 0 14px 0;
+      color: var(--ink);
+      font-weight: 700;
+    }
+
+    div.customOuterWrapper .customExhibit p {
+      font-size: 15.5px;
+      color: var(--ink-soft);
+      margin: 0 0 14px 0;
+    }
+
+    div.customOuterWrapper .customVerdictChip {
+      display: inline-block;
+      font-family: 'Courier New', monospace;
+      font-size: 12px;
+      letter-spacing: 0.04em;
+      padding: 5px 13px;
+      border-radius: 3px;
+      margin-bottom: 16px;
+      border: 1px solid transparent;
+    }
+
+    div.customOuterWrapper .customVerdictGood {
+      color: var(--good);
+      border-color: var(--good);
+      background: rgba(47,107,79,0.08);
+    }
+
+    div.customOuterWrapper .customVerdictBad {
+      color: var(--bad);
+      border-color: var(--bad);
+      background: rgba(138,51,36,0.08);
+    }
+
+    div.customOuterWrapper .customVerdictNone {
+      color: var(--none);
+      border-color: var(--none);
+      background: rgba(107,100,86,0.08);
+    }
+
+    div.customOuterWrapper .customToolList,
+    div.customOuterWrapper .customPlusList,
+    div.customOuterWrapper .customGapList {
+      list-style: none;
+      margin: 0 0 14px 0;
+      padding: 0;
+    }
+
+    div.customOuterWrapper .customToolList li {
+      padding: 12px 0;
+      border-top: 1px solid var(--parchment-dark);
+    }
+
+    div.customOuterWrapper .customToolList li:last-child {
+      border-bottom: 1px solid var(--parchment-dark);
+    }
+
+    div.customOuterWrapper .customToolName {
+      display: block;
+      font-weight: 700;
+      font-size: 15px;
+      color: var(--ink);
+      margin-bottom: 4px;
+    }
+
+    div.customOuterWrapper .customToolNote {
+      display: block;
+      font-size: 14.5px;
+      color: var(--ink-soft);
+    }
+
+    div.customOuterWrapper .customPlusList li,
+    div.customOuterWrapper .customGapList li {
+      position: relative;
+      padding: 0 0 12px 22px;
+      font-size: 15px;
+      color: var(--ink-soft);
+    }
+
+    div.customOuterWrapper .customPlusList li::before {
+      content: "+";
+      position: absolute;
+      left: 0;
+      color: var(--good);
+      font-weight: 700;
+    }
+
+    div.customOuterWrapper .customGapList li::before {
+      content: "\2013";
+      position: absolute;
+      left: 0;
+      color: var(--bad);
+      font-weight: 700;
+    }
+
+    div.customOuterWrapper .customPlusList strong,
+    div.customOuterWrapper .customGapList strong,
+    div.customOuterWrapper .customExhibit p strong {
+      color: var(--ink);
+    }
+
+    div.customOuterWrapper .customTakeaway {
+      background: var(--parchment-dark);
+      border-left: 3px solid var(--gold);
+      padding: 14px 18px;
+      font-size: 14.5px;
+      color: var(--ink);
+      margin-top: 10px;
+    }
+
+    div.customOuterWrapper .customIdeaGrid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-top: 8px;
+    }
+
+    div.customOuterWrapper .customIdeaCard {
+      background: #fff;
+      border: 1px solid var(--parchment-dark);
+      border-top: 3px solid var(--gold);
+      padding: 18px 20px;
+    }
+
+    div.customOuterWrapper .customIdeaCard h3 {
+      font-size: 15.5px;
+      margin: 0 0 8px 0;
+      color: var(--ink);
+    }
+
+    div.customOuterWrapper .customIdeaCard p {
+      font-size: 14px;
+      color: var(--ink-soft);
+      margin: 0;
+    }
+
+    div.customOuterWrapper .customCaseFooter {
+      margin-top: 50px;
+      padding-top: 20px;
+      border-top: 1px solid var(--parchment-dark);
+      font-size: 12.5px;
+      font-style: italic;
+      color: var(--none);
+      text-align: center;
+    }
+
+    @media (max-width: 640px) {
+      div.customOuterWrapper {
+        padding: 34px 22px;
+      }
+      div.customOuterWrapper .customCaseTitle {
+        font-size: 26px;
+      }
+      div.customOuterWrapper .customIdeaGrid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+
+  <header class="customCaseHeader">
+    <div class="customCaseNumber">Review No. 2026/07&nbsp;&mdash;&nbsp;Legal Tech Literature</div>
+    <h1 class="customCaseTitle">Artificial Intelligence &amp; the Future of the Legal Profession</h1>
+    <div class="customCaseMeta">
+      <div class="customCaseMetaRow"><span>Authors</span>Ashmita Mitra &amp; Amulya Baid, Alliance School of Law, Bangalore</div>
+      <div class="customCaseMetaRow"><span>Published</span>International Journal of Legal Science and Innovation, Vol. 1, Issue 2, 2019</div>
+      <div class="customCaseMetaRow"><span>Method</span>Primary survey (n=60) + secondary literature review</div>
+    </div>
+    <p class="customCaseIntro">A working critique of the paper's claims, evidence, and technical grounding &mdash; filed as seven exhibits, closing with what's transferable to a live product build.</p>
+  </header>
+
+  <section class="customExhibit" id="architecture">
+    <div class="customExhibitTab">Exhibit A</div>
+    <h2>Architecture</h2>
+    <div class="customVerdictChip customVerdictNone">Not applicable &mdash; no system was built</div>
+    <p>This is a literature-and-survey paper, not an engineering paper. There is no proposed system, no pipeline, no data flow, and no described model. The word "architecture" doesn't apply to anything the authors built &mdash; only to third-party products they <em>cite</em>, and even then only by name (ROSS Intelligence, LawGeex, CARA.AI, LexisNexis, Kira Systems, Nakhoda), never by mechanism.</p>
+    <p>What passes for structure is the research design itself: a 10-point framework (overview &rarr; hypothesis &rarr; methodology &rarr; findings &rarr; conclusion) borrowed from standard social-science paper templates, plus a country-by-country survey of legal AI adoption in China, Singapore, South Korea, and India. That's a literature structure, not a technical one.</p>
+    <div class="customTakeaway">If you're looking for a reference architecture for a legal-AI product, this paper won't give you one &mdash; it only tells you which named tools existed in 2018&ndash;19 and what task each was pointed at.</div>
+  </section>
+
+  <section class="customExhibit" id="techstack">
+    <div class="customExhibitTab">Exhibit B</div>
+    <h2>How outdated is the tech stack?</h2>
+    <div class="customVerdictChip customVerdictBad">Pre-LLM era &mdash; substantially outdated</div>
+    <p>Every tool the paper names belongs to the pre-transformer, pre-ChatGPT generation of "legal AI," built on keyword search, rules-based NLP, and narrow supervised classifiers &mdash; not generative language models:</p>
+    <ul class="customToolList">
+      <li><span class="customToolName">ROSS Intelligence</span><span class="customToolNote">Cited as a flagship NLP research tool. It shut down in January 2021 after Thomson Reuters sued it for scraping Westlaw headnotes &mdash; a fact the 2019 paper obviously couldn't know, but a 2026 reader should.</span></li>
+      <li><span class="customToolName">LawGeex vs. lawyers study</span><span class="customToolNote">The paper's single strongest statistic (94% AI vs 85% human accuracy, 26 seconds vs 96 minutes) comes from a 2018 vendor-commissioned study on contract-clause classification &mdash; a narrow, closed-domain task, not general legal reasoning. It predates any large language model.</span></li>
+      <li><span class="customToolName">Blue Jay, CARA.AI, Nakhoda, Fa Xiaotao</span><span class="customToolNote">Named once, with no technical description. Several are effectively dormant or absorbed into other products today.</span></li>
+      <li><span class="customToolName">LexisNexis "Lexi Analytics"</span><span class="customToolNote">The product line has since been rebranded and rebuilt around Lexis+ AI (2023), which is generative-model based &mdash; the version discussed here is the pre-generative one.</span></li>
+    </ul>
+    <p>Most importantly, the paper contains <strong>zero mentions of large language models, transformers, retrieval-augmented generation, or generative AI</strong> &mdash; the entire paradigm that now defines legal tech (Harvey, CoCounsel, Lexis+ AI, Spellbook). It was written about a year before GPT-2 popularized the term "generative," and roughly four years before ChatGPT. Treat it as a historical snapshot of legal AI 1.0 (search &amp; classify), not a description of legal AI today (draft, reason, generate).</p>
+  </section>
+
+  <section class="customExhibit" id="testing">
+    <div class="customExhibitTab">Exhibit C</div>
+    <h2>How was the solution tested?</h2>
+    <div class="customVerdictChip customVerdictBad">No solution to test &mdash; opinion survey only</div>
+    <p>There is no solution, so there is no solution testing. What the authors <em>did</em> run is an opinion questionnaire on <strong>60 people aged 18&ndash;25</strong>, a mix of law students and non-law students/professionals, asking things like "will AI cause unemployment?" and "should AI automate or augment law?"</p>
+    <p>This is perception research, not performance evaluation. No accuracy, precision/recall, latency, or benchmark figures were generated by the authors themselves &mdash; the only hard performance numbers in the paper (the LawGeex 94%/85% comparison, the ABA "24.5% faster research" claim) are pulled from other organizations' studies and reproduced without independent verification, replication, or methodological scrutiny.</p>
+    <div class="customTakeaway">Read the survey results as a 2018&ndash;19 sentiment snapshot of a narrow, young, India-based demographic &mdash; not as evidence that any AI system works, or as generalizable public opinion.</div>
+  </section>
+
+  <section class="customExhibit" id="datasets">
+    <div class="customExhibitTab">Exhibit D</div>
+    <h2>What datasets were used?</h2>
+    <div class="customVerdictChip customVerdictNone">None &mdash; only survey responses</div>
+    <p>No legal corpus, case-law dataset, contract dataset, or benchmark was used or created. The only "dataset" in the paper is the raw response set from the 60-person questionnaire, and even that isn't published, tabulated in a table, or attached as an appendix &mdash; it survives only as pie-chart percentages embedded in the text (several of which render as "[PERCENTAGE]" placeholders where chart labels failed to export, e.g. the automation-vs-risk charts on pages 8 and 10).</p>
+    <p>Sample size (n=60), sampling method, and demographic breakdown beyond "age 18&ndash;25" are not disclosed, so the survey can't be re-run or the numbers audited.</p>
+  </section>
+
+  <section class="customExhibit" id="plus">
+    <div class="customExhibitTab">Exhibit E</div>
+    <h2>Plus points of the research</h2>
+    <div class="customVerdictChip customVerdictGood">Useful as a framing document</div>
+    <ul class="customPlusList">
+      <li><strong>Automate-vs-augment framing.</strong> The automate/augment distinction (Ch. 2.2) is a genuinely useful lens that has aged well and still organizes most legal-AI product debates today.</li>
+      <li><strong>Cross-country adoption snapshot.</strong> The China/Singapore/South Korea/India comparison (Wusong's "Fa Xiaotao," WongPartnership + Luminance, Linklaters + Eigen, Cyril Amarchand + Kira) is a rare, concrete look at who was actually deploying legal AI, where, and for what task, rather than abstract claims.</li>
+      <li><strong>Grounded, named use cases.</strong> Contract review, e-discovery pre-filtering, divorce mediation (Wevorce), legal research retrieval &mdash; these are real, specific wedges, not vague "AI will transform law" hand-waving.</li>
+      <li><strong>Honest hypothesis testing.</strong> The authors state hypotheses upfront and report survey results that partly contradict their own literature review (e.g., 78% of respondents believed AI would substitute lawyers, against the augmentation consensus the literature review had just built) rather than smoothing over the disagreement.</li>
+    </ul>
+  </section>
+
+  <section class="customExhibit" id="gaps">
+    <div class="customExhibitTab">Exhibit F</div>
+    <h2>Gaps in the research</h2>
+    <div class="customVerdictChip customVerdictBad">Multiple methodological gaps</div>
+    <ul class="customGapList">
+      <li><strong>Tiny, skewed sample.</strong> n=60, all aged 18&ndash;25 &mdash; too small and too young to support conclusions about "will AI cause unemployment," which is fundamentally a question about the views of practicing professionals, not students.</li>
+      <li><strong>Self-contradicting evidence, unreconciled.</strong> The paper concludes AI will "augment, not automate" law, yet its own survey shows 55% of respondents expect automation and 78% expect substitution of lawyers &mdash; the contradiction is noted but never analytically resolved.</li>
+      <li><strong>Borrowed statistics presented as validated fact.</strong> The LawGeex and ABA figures are taken at face value from vendor/industry sources without checking study design, sample, or conflicts of interest (LawGeex is a commercial vendor benchmarking its own product).</li>
+      <li><strong>No raw data, no confidence intervals, no significance testing</strong> despite being framed as "quantitative research."</li>
+      <li><strong>Broken/placeholder chart labels</strong> in at least two figures (pages 8 and 10 show literal "[PERCENTAGE]" text), suggesting the paper wasn't proofread against its final rendered PDF.</li>
+      <li><strong>No engagement with legal reasoning limits.</strong> Nothing on hallucination, explainability, liability for AI error, or data privacy &mdash; issues that dominate legal-AI discourse today but were only nascent in 2019.</li>
+      <li><strong>Citation hygiene.</strong> Repeated vague "Id at 7," "Id at 11," "Ibid" references make several claims difficult to independently trace back to a source.</li>
+    </ul>
+  </section>
+
+  <section class="customExhibit" id="ideas">
+    <div class="customExhibitTab">Exhibit G</div>
+    <h2>What to take into "Your Legal"</h2>
+    <div class="customVerdictChip customVerdictGood">Concrete, transferable ideas</div>
+    <div class="customIdeaGrid">
+      <div class="customIdeaCard">
+        <h3>Lead with augmentation, not replacement</h3>
+        <p>Position "Your Legal" explicitly as a pre-filter for human judgment (draft &rarr; flag &rarr; human sign-off), not a lawyer-replacement. The paper's own data shows users are anxious about full automation &mdash; product messaging and UX (e.g. mandatory review steps, visible confidence flags) should lean into that trust gap rather than against it.</p>
+      </div>
+      <div class="customIdeaCard">
+        <h3>Use a time-saved metric as your headline number</h3>
+        <p>The "96 minutes &rarr; 26 seconds" and "132&ndash;210 hours/year saved" stats are the most persuasive things in the paper precisely because they're concrete and comparative. Instrument "Your Legal" to generate its own equivalent number (hours saved per contract, per research query) from real usage data &mdash; and be ready to defend it, since borrowed vendor stats age badly and don't survive scrutiny.</p>
+      </div>
+      <div class="customIdeaCard">
+        <h3>Start narrow: contract review or research retrieval</h3>
+        <p>Every durable use case in the paper (LawGeex, Kira, Luminance, Nakhoda) is a narrow, bounded task &mdash; not general legal advice. Pick one wedge task, nail accuracy and explainability there, then expand, rather than shipping a general "AI lawyer."</p>
+      </div>
+      <div class="customIdeaCard">
+        <h3>Build in jurisdiction-awareness from day one</h3>
+        <p>The China/Singapore/Korea/India comparison shows legal AI adoption is highly jurisdiction- and regulation-specific. If "Your Legal" targets more than one region, plan for localized legal corpora, local compliance rules, and separate go-to-market per jurisdiction rather than one global model.</p>
+      </div>
+      <div class="customIdeaCard">
+        <h3>Run your own user research &mdash; properly</h3>
+        <p>Don't repeat this paper's mistake of surveying a small, non-representative group and generalizing from it. Before or during beta, survey actual practicing lawyers and paralegals with a large enough, professionally-relevant sample, and publish the methodology alongside the numbers so your own claims hold up better than the ones critiqued here.</p>
+      </div>
+      <div class="customIdeaCard">
+        <h3>Design for the trust gap explicitly</h3>
+        <p>40.7% of the paper's own respondents were "not sure" whether AI predictions on judgments could be relied on. Surface uncertainty in the product itself &mdash; confidence scores, source citations back to the actual case/clause, and an explicit "verify before relying" pattern &mdash; rather than presenting outputs as settled answers.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="customCaseFooter">Prepared as an independent critique for internal product research. Not legal advice.</footer>
+
+</div>
