@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Critique: Pre-trained Language Models for the Legal Domain (arXiv:2209.06049v5)</title>
+  <style>
+    /* All styles scoped inside .customOuterWrapper */
+    div.customOuterWrapper {
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #f4f9fe;
+      color: #0a263f;
+      max-width: 1300px;
+      margin: 2rem auto;
+      padding: 2.2rem 2.5rem;
+      border-radius: 36px;
+      box-shadow: 0 12px 32px rgba(0, 20, 40, 0.04);
+      line-height: 1.65;
+    }
+    div.customOuterWrapper * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    div.customOuterWrapper h1 {
+      font-size: 2.2rem;
+      font-weight: 650;
+      letter-spacing: -0.02em;
+      border-left: 8px solid #1a6f8a;
+      padding-left: 1.5rem;
+      margin-bottom: 1.5rem;
+      color: #072b44;
+      background: linear-gradient(to right, #e2eefa, transparent);
+      padding-top: 0.2rem;
+      padding-bottom: 0.2rem;
+      border-radius: 0 40px 40px 0;
+    }
+    div.customOuterWrapper h2 {
+      font-size: 1.7rem;
+      font-weight: 600;
+      margin-top: 2.2rem;
+      margin-bottom: 0.9rem;
+      color: #1a4a6e;
+      border-bottom: 3px solid #c0d6ec;
+      padding-bottom: 0.3rem;
+      display: inline-block;
+    }
+    div.customOuterWrapper h3 {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-top: 1.6rem;
+      margin-bottom: 0.5rem;
+      color: #154a6b;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    div.customOuterWrapper h4 {
+      font-weight: 600;
+      font-size: 1.05rem;
+      margin-top: 1.0rem;
+      margin-bottom: 0.2rem;
+      color: #12405d;
+      background: #dce8f3;
+      padding: 0.1rem 1.2rem;
+      border-radius: 30px;
+      display: inline-block;
+    }
+    div.customOuterWrapper p {
+      margin-bottom: 0.8rem;
+      text-align: justify;
+    }
+    div.customOuterWrapper ul, div.customOuterWrapper ol {
+      margin: 0.6rem 0 1.2rem 1.8rem;
+    }
+    div.customOuterWrapper li {
+      margin-bottom: 0.4rem;
+    }
+    div.customOuterWrapper .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin: 1.8rem 0;
+    }
+    div.customOuterWrapper .card {
+      background: #ffffff;
+      border-radius: 28px;
+      padding: 1.2rem 1.8rem 1.8rem;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.02), 0 1px 6px rgba(0, 20, 40, 0.05);
+      border: 1px solid #e0ebf5;
+      transition: 0.1s ease;
+    }
+    div.customOuterWrapper .card:hover {
+      border-color: #b2cce6;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.03);
+    }
+    div.customOuterWrapper .badge {
+      background: #163d5a;
+      color: #f1faff;
+      padding: 0.2rem 1.1rem;
+      border-radius: 40px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      display: inline-block;
+      margin-right: 0.5rem;
+    }
+    div.customOuterWrapper .tag {
+      background: #cedfef;
+      color: #0e3854;
+      padding: 0.15rem 0.9rem;
+      border-radius: 40px;
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+    div.customOuterWrapper .highlight-box {
+      background: #e2edf8;
+      border-radius: 24px;
+      padding: 1.2rem 2rem;
+      margin: 1.8rem 0;
+      border-left: 6px solid #1a6f8a;
+    }
+    div.customOuterWrapper .footnote {
+      background: #ecf3fb;
+      padding: 0.9rem 2rem;
+      border-radius: 60px;
+      color: #123653;
+      border: 1px solid #c5d9ed;
+      font-size: 0.95rem;
+    }
+    div.customOuterWrapper hr {
+      margin: 2.4rem 0 1.8rem;
+      border: 0;
+      height: 2px;
+      background: linear-gradient(to right, #c4d9eb, #eef4fa);
+    }
+    div.customOuterWrapper table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+      margin: 1rem 0;
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+    }
+    div.customOuterWrapper th, div.customOuterWrapper td {
+      border: 1px solid #d6e3f0;
+      padding: 0.6rem 0.9rem;
+      text-align: left;
+    }
+    div.customOuterWrapper th {
+      background: #e6eff8;
+      font-weight: 600;
+      color: #133e5c;
+    }
+    @media (max-width: 700px) {
+      div.customOuterWrapper { padding: 1.2rem; }
+      div.customOuterWrapper .grid-2 { grid-template-columns: 1fr; }
+      div.customOuterWrapper h1 { font-size: 1.8rem; }
+      div.customOuterWrapper table { font-size: 0.8rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="customOuterWrapper">
+
+  <h1>⚖️ Pre-trained Language Models for the Legal Domain — critique &amp; analysis</h1>
+  <p style="background: #e0ecf7; padding: 0.4rem 1.6rem; border-radius: 60px; display: inline-block; margin-bottom: 1.2rem;">
+    <span class="tag">arXiv:2209.06049v5</span> &nbsp;|&nbsp; Paul, Mandal, Goyal, Ghosh (IIT Kharagpur)
+  </p>
+
+  <!-- ========== ARCHITECTURE ========== -->
+  <h2>🏛️ Architecture</h2>
+  <div class="card">
+    <p><strong>Transformer‑based PLM with HierBERT fine‑tuning</strong> – the paper presents a rigorous study of pre‑trained language models for Indian legal text. The core architecture involves:</p>
+    <ul>
+      <li><strong>Pre‑training:</strong> BERT‑base (12 layers, 768 hidden, 12 heads) with MLM + NSP objectives. Three variants: <em>InLegalBERT</em> (continued pre‑training of LegalBERT), <em>InCaseLawBERT</em> (continued pre‑training of CaseLawBERT), and <em>CustomInLawBERT</em> (trained from scratch with Indian‑specific vocabulary).</li>
+      <li><strong>Fine‑tuning:</strong> HierBERT architecture (lower‑level BERT encoder + upper BiLSTM with attention) for long documents, with task‑specific heads (linear/CRF).</li>
+      <li><strong>Data pipeline:</strong> Chunking into 254‑token segments, dynamic masking, whole‑word masking, and dynamic NSP sampling.</li>
+    </ul>
+    <p style="margin-top: 0.5rem;"><span class="badge">✅</span> Architecture is <strong>state‑of‑the‑art</strong> for legal NLP – BERT‑based, hierarchical processing, and carefully designed pre‑training. The HierBERT design is well‑suited for long legal documents.</p>
+  </div>
+
+  <!-- ========== OUTDATED TECH ========== -->
+  <h2>🕰️ How outdated is the used / referred technology stack?</h2>
+  <div class="grid-2">
+    <div class="card">
+      <h4>📚 Stack components</h4>
+      <ul>
+        <li><strong>BERT‑base</strong> – 2018, but still a solid foundation; RoBERTa/Longformer are more recent.</li>
+        <li><strong>LegalBERT / CaseLawBERT</strong> – 2020–2021, still relevant.</li>
+        <li><strong>HierBERT + BiLSTM + Attention</strong> – modern for long‑document tasks.</li>
+        <li><strong>PyTorch, HuggingFace Transformers, Datasets</strong> – current and actively maintained.</li>
+        <li><strong>WordPiece tokenizer with custom Indian vocabulary</strong> – tailored approach.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>⏳ Currency assessment</h4>
+      <p>The technology stack is <strong>modern (2020–2022)</strong> and well‑chosen for the task. The paper uses BERT‑base rather than more recent LLMs (e.g., GPT‑3/4, Mistral), but this is intentional for controlled comparison and reproducibility. The HierBERT architecture is still used in legal NLP today. The paper <strong>does not</strong> use retrieval‑augmented generation (RAG) or generative LLMs, but that is outside its scope (it focuses on discriminative tasks).</p>
+      <p style="background: #f2f7fc; padding: 0.3rem 1rem; border-radius: 30px; margin-top: 0.6rem;"><span class="tag">📈</span> The stack is <strong>not outdated</strong> – it represents best practices for PLM‑based legal NLP as of 2022.</p>
+    </div>
+  </div>
+
+  <!-- ========== TESTING ========== -->
+  <h2>🧪 How was the solution tested?</h2>
+  <div class="card">
+    <p><strong>Rigorous and comprehensive evaluation</strong> – the paper is a benchmark‑style study with:</p>
+    <ul>
+      <li><strong>Pre‑training quality:</strong> Perplexity on a held‑out test set (10% of Indian legal corpus).</li>
+      <li><strong>Three downstream tasks</strong> across <strong>five datasets</strong> (Indian and non‑Indian): Legal Statute Identification (ILSI, ECtHR‑B), Semantic Segmentation (ISS, UKSS), and Court Judgment Prediction (ILDC‑multi).</li>
+      <li><strong>Metrics:</strong> Macro‑precision, macro‑recall, macro‑F1 (5‑fold cross‑validation).</li>
+      <li><strong>Statistical significance:</strong> Wilcoxon Signed‑Rank Test.</li>
+      <li><strong>Explainability:</strong> KL‑divergence between model attention and expert annotations (ILDC‑expert).</li>
+      <li><strong>Comparison with prior SOTA:</strong> Outperforms original works on 4 out of 5 datasets.</li>
+    </ul>
+    <p><span class="badge">✅</span> This is the <strong>most rigorously evaluated</strong> paper among all reviewed – with quantitative metrics, statistical tests, and qualitative explainability analysis.</p>
+  </div>
+
+  <!-- ========== DATASETS ========== -->
+  <h2>📂 What data sets were used?</h2>
+  <div class="card">
+    <p><strong>Large‑scale Indian legal corpus for pre‑training</strong>:</p>
+    <ul>
+      <li><strong>~5.4 million documents, ~27 GB raw text</strong> – Supreme Court, 26 High Courts, 2 District Courts, and 1,113 Central Government Acts (32,021 Sections).</li>
+      <li><strong>Time period:</strong> 1950–2019 (with some 1800s cases).</li>
+      <li><strong>Pre‑processing:</strong> Noise removal (artefacts from digitisation), chunking into 254‑token segments.</li>
+    </ul>
+    <p><strong>Downstream datasets:</strong></p>
+    <ul>
+      <li><strong>ILSI (Indian Statute Identification)</strong> – from Paul et al. (2022).</li>
+      <li><strong>ECtHR‑B (European Court of Human Rights)</strong> – from Chalkidis et al. (2022).</li>
+      <li><strong>ISS (Indian Semantic Segmentation)</strong> – from Bhattacharya et al. (2019).</li>
+      <li><strong>UKSS (UK Semantic Segmentation)</strong> – from Bhattacharya et al. (2021).</li>
+      <li><strong>ILDC‑multi (Court Judgment Prediction)</strong> – from Malik et al. (2021).</li>
+      <li><strong>ILDC‑expert</strong> – 56 documents with expert annotations for explainability.</li>
+    </ul>
+    <p style="background: #fcf2e6; border-radius: 20px; padding: 0.4rem 1.2rem; margin-top: 0.6rem;"><span class="tag">📌</span> All datasets are <strong>publicly available benchmarks</strong> – excellent for reproducibility.</p>
+  </div>
+
+  <!-- ========== PLUS POINTS ========== -->
+  <h2>✅ Plus points of the research</h2>
+  <div class="grid-2">
+    <div class="card">
+      <h4>💡 Technical contributions</h4>
+      <ul>
+        <li><strong>First large‑scale PLM study for Indian law</strong> – fills a critical gap.</li>
+        <li><strong>Three PLM variants</strong> – re‑trained LegalBERT, re‑trained CaseLawBERT, and from‑scratch with custom vocabulary.</li>
+        <li><strong>Comprehensive evaluation</strong> – three tasks, five datasets, both Indian and non‑Indian.</li>
+        <li><strong>Explainability analysis</strong> – compares model attention with expert annotations using KL‑divergence.</li>
+        <li><strong>Public release</strong> – models and code on HuggingFace and GitHub.</li>
+        <li><strong>State‑of‑the‑art results</strong> – outperforms prior works on 4 out of 5 datasets.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>🔍 Practical insights</h4>
+      <ul>
+        <li><strong>Re‑training vs. from‑scratch</strong> – shows that re‑training is more cost‑effective with limited compute.</li>
+        <li><strong>Adaptability of LegalBERT</strong> – LegalBERT is more adaptable to new domains than CaseLawBERT.</li>
+        <li><strong>Custom vocabulary helps</strong> – but not enough to beat re‑trained models with limited steps.</li>
+        <li><strong>Indian legal text is noisy</strong> – pre‑processing and domain‑specific pre‑training are crucial.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ========== GAPS ========== -->
+  <h2>❌ Gaps in the research</h2>
+  <div class="highlight-box">
+    <ul style="font-weight: 450;">
+      <li><strong>Limited pre‑training steps</strong> – due to compute constraints, models were trained for fewer steps than prior works (300k–700k vs. 1M–2M).</li>
+      <li><strong>No generative / conversational tasks</strong> – focuses only on discriminative tasks (classification, segmentation). No Q&amp;A or chatbot evaluation.</li>
+      <li><strong>No RAG or LLM integration</strong> – does not explore retrieval‑augmented generation or large generative models.</li>
+      <li><strong>No multilingual evaluation</strong> – all tasks are in English (Indian legal text is in English).</li>
+      <li><strong>Explainability only for CJPE</strong> – KL‑divergence analysis is limited to one task and a small expert dataset.</li>
+      <li><strong>No bias or fairness analysis</strong> – legal AI must be fair; not addressed.</li>
+      <li><strong>Pre‑training data skew</strong> – temporal skew (recent cases dominate) may introduce bias.</li>
+    </ul>
+  </div>
+
+  <!-- ========== IDEAS FOR "Your Legal" ========== -->
+  <h2>🧠 Ideas to learn and use in <em>“Your Legal”</em> solution</h2>
+  <div style="background: #dceaf7; border-radius: 28px; padding: 1.6rem 2.2rem; border: 1px solid #b2cde8;">
+    <ul style="font-size: 1.02rem; list-style-type: '✨ '; padding-left: 1.8rem;">
+      <li><strong>Use InLegalBERT as a base encoder</strong> – it is publicly available and outperforms general BERT on Indian legal tasks.</li>
+      <li><strong>Adopt HierBERT for long documents</strong> – chunk‑then‑encode with BiLSTM + attention is effective for legal texts.</li>
+      <li><strong>Build a custom vocabulary</strong> – Indian legal text has unique terms; a tailored tokenizer improves performance.</li>
+      <li><strong>Continue pre‑training (re‑training) rather than from‑scratch</strong> – more efficient with limited compute.</li>
+      <li><strong>Include explainability</strong> – use attention scores or LIME/SHAP to show which parts of the document influenced the answer.</li>
+      <li><strong>Leverage public Indian legal datasets</strong> – ILDC, ILSI, ISS are available for fine‑tuning and evaluation.</li>
+      <li><strong>Extend to generative tasks</strong> – use InLegalBERT as a backbone for a RAG‑based conversational legal assistant.</li>
+      <li><strong>Address bias and fairness</strong> – analyse model predictions across different demographics and case types.</li>
+    </ul>
+    <p style="margin-top: 1rem;"><span class="badge">🚀</span> <strong>Your Legal</strong> can adopt <em>InLegalBERT + HierBERT</em> as the core NLP engine, combine it with <strong>RAG + generative LLM</strong> for conversational Q&amp;A, and leverage the <strong>public Indian legal datasets</strong> for fine‑tuning and evaluation.</p>
+  </div>
+
+  <!-- ========== FINAL ========== -->
+  <hr />
+  <div class="footnote">
+    <strong>📌 Final verdict:</strong> This is the <strong>most rigorous and impactful</strong> paper among all reviewed. It provides a <strong>benchmark‑quality study</strong> on PLMs for Indian law, with clear methodology, comprehensive evaluation, and public release of models and code. The findings (re‑training LegalBERT is effective, custom vocabulary helps, HierBERT works well) are directly applicable to “Your Legal”. The main gaps are the lack of generative / conversational tasks and RAG, but these can be addressed by extending the work. <strong>Strongly recommended</strong> as a foundation for any Indian legal NLP project.
+  </div>
+
+  <p style="margin-top: 2rem; color: #1a4a6b; font-size: 0.9rem; border-top: 1px solid #d0e1ef; padding-top: 1.2rem; text-align: right;">
+    critique based on arXiv:2209.06049v5 · prepared for “Your Legal” solution
+  </p>
+
+</div>
+</body>
+</html>
