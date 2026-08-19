@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>LAWBOT — Paper Critique</title>
+<style>
+div.customOuterWrapper {
+  font-family: "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  background: #14171f;
+  color: #e8e4d9;
+  padding: 0;
+  margin: 0;
+  line-height: 1.65;
+}
+
+div.customOuterWrapper * {
+  box-sizing: border-box;
+}
+
+div.customOuterWrapper .cover {
+  background:
+    linear-gradient(180deg, rgba(20,23,31,0.2), rgba(20,23,31,0.95)),
+    repeating-linear-gradient(115deg, rgba(184,147,95,0.05) 0px, rgba(184,147,95,0.05) 2px, transparent 2px, transparent 40px);
+  border-bottom: 1px solid #3a3f4d;
+  padding: 64px 48px 48px 48px;
+}
+
+div.customOuterWrapper .docket {
+  font-family: "Courier New", monospace;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #b8935f;
+  margin: 0 0 18px 0;
+}
+
+div.customOuterWrapper .cover h1 {
+  font-family: "Playfair Display", "Iowan Old Style", Georgia, serif;
+  font-size: 44px;
+  font-weight: 700;
+  margin: 0 0 10px 0;
+  color: #f4efe3;
+  letter-spacing: 0.01em;
+}
+
+div.customOuterWrapper .cover .subtitle {
+  font-size: 17px;
+  color: #a9a48f;
+  font-style: italic;
+  margin: 0 0 28px 0;
+  max-width: 620px;
+}
+
+div.customOuterWrapper .cover .meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 28px;
+  border-top: 1px solid #3a3f4d;
+  padding-top: 20px;
+  margin-top: 20px;
+}
+
+div.customOuterWrapper .cover .meta-item {
+  min-width: 160px;
+}
+
+div.customOuterWrapper .cover .meta-label {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: #7d7969;
+  margin: 0 0 4px 0;
+}
+
+div.customOuterWrapper .cover .meta-value {
+  font-size: 14px;
+  color: #d9d4c4;
+  margin: 0;
+}
+
+div.customOuterWrapper .body-inner {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 8px 48px 80px 48px;
+}
+
+div.customOuterWrapper section.finding {
+  border-top: 1px solid #2c303c;
+  padding: 46px 0 10px 0;
+}
+
+div.customOuterWrapper section.finding:first-of-type {
+  border-top: none;
+}
+
+div.customOuterWrapper .finding-head {
+  display: flex;
+  align-items: baseline;
+  gap: 18px;
+  margin-bottom: 18px;
+}
+
+div.customOuterWrapper .finding-num {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 15px;
+  color: #14171f;
+  background: #b8935f;
+  border-radius: 3px;
+  padding: 3px 10px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  flex-shrink: 0;
+}
+
+div.customOuterWrapper .finding-head h2 {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 25px;
+  font-weight: 700;
+  color: #f4efe3;
+  margin: 0;
+}
+
+div.customOuterWrapper .finding p {
+  color: #cfcabb;
+  font-size: 15.5px;
+  margin: 0 0 14px 0;
+}
+
+div.customOuterWrapper .finding ul {
+  margin: 0 0 16px 0;
+  padding-left: 22px;
+}
+
+div.customOuterWrapper .finding li {
+  color: #cfcabb;
+  font-size: 15px;
+  margin-bottom: 9px;
+}
+
+div.customOuterWrapper .finding li strong,
+div.customOuterWrapper .finding p strong {
+  color: #f0ead9;
+  font-weight: 700;
+}
+
+div.customOuterWrapper .verdict-strip {
+  display: flex;
+  gap: 14px;
+  margin: 8px 0 20px 0;
+  flex-wrap: wrap;
+}
+
+div.customOuterWrapper .verdict-pill {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 1px solid #4a4f5e;
+  color: #cfcabb;
+}
+
+div.customOuterWrapper .verdict-pill.warn {
+  border-color: #8a5a3a;
+  color: #d9a877;
+}
+
+div.customOuterWrapper .verdict-pill.good {
+  border-color: #4a6a4f;
+  color: #92c299;
+}
+
+div.customOuterWrapper table.evidence {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 18px 0 22px 0;
+  font-size: 14px;
+}
+
+div.customOuterWrapper table.evidence th {
+  text-align: left;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #b8935f;
+  border-bottom: 1px solid #4a4f5e;
+  padding: 8px 12px 8px 0;
+  font-weight: 700;
+}
+
+div.customOuterWrapper table.evidence td {
+  padding: 10px 12px 10px 0;
+  border-bottom: 1px solid #262a35;
+  color: #cfcabb;
+  vertical-align: top;
+}
+
+div.customOuterWrapper table.evidence tr:last-child td {
+  border-bottom: none;
+}
+
+div.customOuterWrapper .callout {
+  background: #1b1f29;
+  border-left: 3px solid #b8935f;
+  padding: 16px 20px;
+  margin: 20px 0;
+  border-radius: 0 4px 4px 0;
+}
+
+div.customOuterWrapper .callout p {
+  margin: 0;
+  font-size: 14.5px;
+  color: #d9d4c4;
+}
+
+div.customOuterWrapper .callout .callout-label {
+  font-size: 10.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #b8935f;
+  margin: 0 0 6px 0;
+  font-weight: 700;
+}
+
+div.customOuterWrapper .idea-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin: 18px 0;
+}
+
+div.customOuterWrapper .idea-card {
+  background: #1b1f29;
+  border: 1px solid #2c303c;
+  border-radius: 6px;
+  padding: 18px 20px;
+}
+
+div.customOuterWrapper .idea-card h3 {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 16px;
+  color: #f0ead9;
+  margin: 0 0 8px 0;
+}
+
+div.customOuterWrapper .idea-card p {
+  font-size: 13.5px;
+  color: #b9b4a4;
+  margin: 0;
+}
+
+div.customOuterWrapper .idea-card .tag {
+  display: inline-block;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #14171f;
+  background: #92c299;
+  padding: 2px 8px;
+  border-radius: 3px;
+  margin-bottom: 10px;
+}
+
+div.customOuterWrapper .idea-card .tag.avoid {
+  background: #d9a877;
+}
+
+div.customOuterWrapper .closing {
+  border-top: 1px solid #3a3f4d;
+  margin-top: 40px;
+  padding-top: 28px;
+  text-align: center;
+}
+
+div.customOuterWrapper .closing p {
+  font-size: 12.5px;
+  color: #6f6b5c;
+  letter-spacing: 0.04em;
+  margin: 0;
+}
+
+@media (max-width: 640px) {
+  div.customOuterWrapper .cover { padding: 40px 24px 32px 24px; }
+  div.customOuterWrapper .cover h1 { font-size: 30px; }
+  div.customOuterWrapper .body-inner { padding: 8px 22px 60px 22px; }
+  div.customOuterWrapper .idea-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<div class="customOuterWrapper">
+
+  <div class="cover">
+    <p class="docket">Paper Review · I2CT 2024 · IEEE</p>
+    <h1>LAWBOT, Read Closely</h1>
+    <p class="subtitle">A working critique of "LAWBOT: A Smart User Indian Legal Chatbot using Machine Learning Framework" — architecture, tech-stack currency, evaluation rigor, and what's actually worth borrowing.</p>
+    <div class="meta-row">
+      <div class="meta-item">
+        <p class="meta-label">Authors</p>
+        <p class="meta-value">Nikita, Srivastav, Patel, Singh, Sharma, Rana, Mehta — SVNIT Surat</p>
+      </div>
+      <div class="meta-item">
+        <p class="meta-label">Venue</p>
+        <p class="meta-value">IEEE I2CT, Pune, Apr 2024</p>
+      </div>
+      <div class="meta-item">
+        <p class="meta-label">Core stack</p>
+        <p class="meta-value">RASA · Longformer · Cosine Similarity · Botpress</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="body-inner">
+
+    <section class="finding">
+      <div class="finding-head">
+        <span class="finding-num">01</span>
+        <h2>Architecture</h2>
+      </div>
+      <p>LAWBOT is not one system but three independent lookup tools glued behind a shared menu. There's no unifying model or shared representation across them — each functionality has its own database, its own matching logic, and its own code path.</p>
+      <table class="evidence">
+        <tr><th>Module</th><th>Input</th><th>Matching method</th><th>Output</th></tr>
+        <tr><td>Case Study</td><td>Court, case type, free keywords</td><td>Longformer embeddings + cosine similarity</td><td>Top 3 judgment links</td></tr>
+        <tr><td>Lawyer Information</td><td>Court, state, case type</td><td>Python pattern/string matching</td><td>Lawyer name, contact, practice area</td></tr>
+        <tr><td>Legal FAQs</td><td>Free-text question</td><td>RASA intent classifier (sklearn), 20 intents × 5 examples</td><td>Canned answer for matched intent</td></tr>
+      </table>
+      <p>The flow is menu-driven rather than conversational: the user picks court → case type → keywords through button-style prompts (Fig. 5–7), and only the FAQ module accepts open text. Data collection (judgments, lawyer listings) is a one-time offline scrape; there is no pipeline shown for refreshing these databases, so the "database" is really a static snapshot baked in at build time.</p>
+      <div class="callout">
+        <p class="callout-label">Read this as</p>
+        <p>A prototype orchestration layer (RASA + Botpress front end) sitting on top of three disconnected retrieval scripts, not a single trained "legal understanding" system.</p>
+      </div>
+    </section>
+
+    <section class="finding">
+      <div class="finding-head">
+        <span class="finding-num">02</span>
+        <h2>How outdated is the tech stack?</h2>
+      </div>
+      <div class="verdict-strip">
+        <span class="verdict-pill warn">Dated by 2026 standards</span>
+        <span class="verdict-pill">Reasonable for 2023–24 academic scope</span>
+      </div>
+      <p>Judged against what's available today, this is a pre-LLM-era stack, and several choices were already conservative even at publication time.</p>
+      <ul>
+        <li><strong>Longformer for embeddings (2020 model)</strong> — chosen for long-context handling, but it predates instruction-tuned and legal-domain-specific embedding models. No comparison against Legal-BERT, InLegalBERT, or modern sentence-embedding models (e.g. E5, BGE) is offered, despite Legal-BERT appearing in their own literature survey.</li>
+        <li><strong>RASA + sklearn intent classifier</strong> — solid, production-grade for narrow-domain slot filling, but a 20-intent classifier with 5 examples each is a toy-sized training set; it cannot generalize to real query phrasing variance.</li>
+        <li><strong>No generative model anywhere in the pipeline</strong> — every answer is a retrieved document link, a database record, or a canned FAQ string. There's no synthesis, summarization, or explanation layer — the exact gap that instruction-tuned LLMs (open or API-based) now close cheaply.</li>
+        <li><strong>Cosine similarity over raw embeddings</strong> — no re-ranking, no hybrid sparse+dense retrieval (BM25 + embeddings), which the paper's own cited work (Khazaeli et al.) shows outperforms embeddings alone.</li>
+        <li><strong>Static, scraped databases</strong> — no vector database, no incremental indexing, no mention of how new judgments or lawyer listings would be ingested over time.</li>
+      </ul>
+      <p>None of this makes the paper worthless — it documents a clean, explainable, low-compute pipeline. But if you're building today, treat every component here as the 2023 baseline to beat, not the target architecture.</p>
+    </section>
+
+    <section class="finding">
+      <div class="finding-head">
+        <span class="finding-num">03</span>
+        <h2>How was the solution tested?</h2>
+      </div>
+      <div class="verdict-strip">
+        <span class="verdict-pill warn">No formal evaluation</span>
+      </div>
+      <p>This is the paper's weakest point. There is no quantitative evaluation anywhere in the text — no accuracy, precision/recall, F1, intent-classification accuracy, or user study numbers of any kind.</p>
+      <ul>
+        <li>"Testing" consists entirely of <strong>screenshots of the chatbot in use</strong> (Fig. 7–10): a lawyer search, a case search returning three links, and an FAQ answer for "how to file a FIR."</li>
+        <li>The cosine similarity table (Table III) is illustrative sample data for 3 keywords against 5 documents — it demonstrates the mechanism, not a benchmark result.</li>
+        <li>There's no held-out test set, no comparison baseline, no measure of retrieval relevance (e.g. precision@3 for the case-matching function), and no legal-expert validation of FAQ answers or retrieved cases.</li>
+        <li>No latency, scalability, or failure-mode discussion (e.g. what happens with zero keyword matches, or an out-of-scope legal question).</li>
+      </ul>
+      <div class="callout">
+        <p class="callout-label">Implication</p>
+        <p>Every functional claim in the paper ("provides the most relevant lawyer information," "most similar cases") is asserted from a working demo, not measured. Treat the system as a functioning prototype with unverified accuracy.</p>
+      </div>
+    </section>
+
+    <section class="finding">
+      <div class="finding-head">
+        <span class="finding-num">04</span>
+        <h2>What datasets were used?</h2>
+      </div>
+      <table class="evidence">
+        <tr><th>Dataset</th><th>Source</th><th>Notes</th></tr>
+        <tr><td>Judgment / Case corpus</td><td>Indian Kanoon (scraped)</td><td>Sample of Supreme Court judgments; exact corpus size not stated</td></tr>
+        <tr><td>Lawyer directory</td><td>legalserviceindia.com (web-scraped via Requests + BeautifulSoup)</td><td>Fields: name, state, court of practice, area of practice; address dropped for privacy</td></tr>
+        <tr><td>Legal FAQ / intent training set</td><td>Authored in-house</td><td>20 intents, 5 example utterances each (100 labeled examples total)</td></tr>
+        <tr><td>Legal stopword list</td><td>Derived, not sourced</td><td>Generated by intersecting words common across all documents in the judgment corpus</td></tr>
+      </table>
+      <p>No dataset sizes (document counts), no train/test split, and no public release of any of these datasets are mentioned. All three are custom-built specifically for this paper and are not shared or benchmarked against an existing Indian legal corpus (e.g. ILDC, no citation to it despite it being a known Indian legal NLP dataset).</p>
+    </section>
+
+    <section class="finding">
+      <div class="finding-head">
+        <span class="finding-num">05</span>
+        <h2>Plus points of the research</h2>
+      </div>
+      <ul>
+        <li><strong>India-specific framing.</strong> Most cited prior work targets Thai, Indonesian, or generic Western legal QA — this paper explicitly fills the "Indian legal chatbot" gap the authors identify in their own literature review.</li>
+        <li><strong>Practical, buildable scope.</strong> Three well-bounded functions (case search, lawyer search, FAQ) rather than an ambitious general legal-reasoning claim — a realistic scope for a student/academic project.</li>
+        <li><strong>Legal stopword construction is a genuinely useful, transferable idea.</strong> Removing terms like "court," "judge," "petitioner" before embedding prevents every legal document from looking similar due to shared boilerplate vocabulary — a real, practical fix for legal-domain similarity search.</li>
+        <li><strong>Multi-service integration (Telegram deployment)</strong> shows the system was taken past a notebook demo into an actual messaging interface.</li>
+        <li><strong>Clear architecture diagrams and workflow figures</strong> make the pipeline easy to follow and reproduce at a high level, even without published code.</li>
+        <li><strong>Honest literature survey</strong> that correctly identifies its own related work's stronger techniques (BM25 + Legal-BERT hybrid, SVM-Rank, CNN-based QA) rather than overstating novelty.</li>
+      </ul>
+    </section>
+
+    <section class="finding">
+      <div class="finding-head">
+        <span class="finding-num">06</span>
+        <h2>Gaps in the research</h2>
+      </div>
+      <ul>
+        <li><strong>No evaluation metrics</strong> — covered in point 3, but worth restating as the single biggest gap: there's no way to know if this system actually works better than keyword search.</li>
+        <li><strong>No legal accuracy or liability discussion.</strong> A legal-advice-adjacent tool with zero mention of disclaimers, hallucination risk, or the difference between "information" and "advice" is a real gap for anything India-deployed, given Bar Council and unauthorized-practice-of-law concerns.</li>
+        <li><strong>Static data, no freshness strategy.</strong> Judgments and lawyer listings are scraped once; there's no update mechanism, so the system degrades the moment new case law or lawyer registrations change.</li>
+        <li><strong>No multilingual support</strong> despite this being explicitly flagged by the authors as future work — a significant gap for an "Indian" legal chatbot given the country's linguistic diversity.</li>
+        <li><strong>Shallow FAQ coverage.</strong> 20 intents with 5 examples each cannot cover the breadth of common legal questions; no discussion of fallback behavior when a query doesn't match any intent.</li>
+        <li><strong>No user study.</strong> No usability testing, no target-user (rural/urban, literate/semi-literate) validation, despite "average citizen" being the stated audience.</li>
+        <li><strong>Case retrieval quality is unverified.</strong> Nothing confirms the top-3 documents returned for a query are actually the most legally relevant ones — only that they have the highest cosine similarity, which is a proxy, not ground truth.</li>
+        <li><strong>Lawyer matching is pure pattern matching</strong>, with no ranking by qualification, rating, availability, or verification of the lawyer's current registration status.</li>
+      </ul>
+    </section>
+
+    <section class="finding">
+      <div class="finding-head">
+        <span class="finding-num">07</span>
+        <h2>What to take into "Your Legal"</h2>
+      </div>
+      <p>Some of this paper's structure is worth reusing directly; some of its choices are exactly what a modern build should replace.</p>
+      <div class="idea-grid">
+        <div class="idea-card">
+          <span class="tag">Borrow</span>
+          <h3>Legal stopword removal before embedding</h3>
+          <p>Build (or find) an Indian legal stopword list — court/procedural boilerplate terms — and strip it before any similarity search. Cheap, and directly improves retrieval signal-to-noise.</p>
+        </div>
+        <div class="idea-card">
+          <span class="tag">Borrow</span>
+          <h3>Three-function decomposition</h3>
+          <p>Splitting "find case," "find lawyer," "answer FAQ" into separate, independently testable retrieval problems is a sound product structure — keep the separation, even if you unify the backend later.</p>
+        </div>
+        <div class="idea-card">
+          <span class="tag avoid">Replace</span>
+          <h3>Longformer + raw cosine similarity</h3>
+          <p>Swap for a modern legal or general-purpose embedding model with a proper vector DB, plus hybrid BM25+dense retrieval and a re-ranking step — this alone should beat their case-search accuracy significantly.</p>
+        </div>
+        <div class="idea-card">
+          <span class="tag avoid">Replace</span>
+          <h3>20-intent RASA FAQ classifier</h3>
+          <p>Replace hand-authored intents with retrieval-augmented generation over a real legal-FAQ/statute corpus, so answers aren't capped at whatever 20 topics someone thought to write examples for.</p>
+        </div>
+        <div class="idea-card">
+          <span class="tag">Borrow</span>
+          <h3>Menu-guided narrowing before free text</h3>
+          <p>Court → case-type → keyword funneling reduces ambiguity before search runs. Worth keeping as an optional "guided mode" alongside free-text chat, especially for less tech-literate users.</p>
+        </div>
+        <div class="idea-card">
+          <span class="tag avoid">Fix from day one</span>
+          <h3>No evaluation harness</h3>
+          <p>Don't repeat their biggest gap — build a labeled eval set (queries → known-good judgments/lawyers/answers) early and track precision@k, so you have actual evidence the system works, not just demo screenshots.</p>
+        </div>
+        <div class="idea-card">
+          <span class="tag avoid">Add</span>
+          <h3>Data freshness pipeline</h3>
+          <p>Instead of a one-time scrape, design an incremental ingestion job (new Indian Kanoon judgments, Bar Council lawyer records) so the knowledge base doesn't go stale the day after launch.</p>
+        </div>
+        <div class="idea-card">
+          <span class="tag avoid">Add</span>
+          <h3>Disclaimers &amp; scope boundaries</h3>
+          <p>Bake in explicit "this is legal information, not legal advice" framing and refusal behavior for out-of-scope requests — something entirely absent here and a real liability gap for an India-facing product.</p>
+        </div>
+      </div>
+      <div class="callout">
+        <p class="callout-label">One-line takeaway</p>
+        <p>LAWBOT is most useful to you as a scoped feature map (case search / lawyer search / FAQ) and a reminder to preprocess legal text with domain-aware stopwords — not as a reference architecture, since its retrieval, evaluation, and generation layers are all behind what's cheaply achievable now.</p>
+      </div>
+    </section>
+
+    <div class="closing">
+      <p>Critique prepared for internal use — source: LAWBOT, I2CT 2024, IEEE Xplore DOI 10.1109/I2CT61223.2024.10543337</p>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>
