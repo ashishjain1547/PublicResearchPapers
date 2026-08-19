@@ -1,0 +1,412 @@
+<div class="customOuterWrapper">
+  <style>
+    div.customOuterWrapper {
+      --ink: #1c2333;
+      --ink-soft: #3c4358;
+      --parchment: #f2ede2;
+      --parchment-dark: #e6dfd0;
+      --gold: #a3793f;
+      --gold-deep: #7c5a2b;
+      --red-tab: #7a3226;
+      --good: #2f6b4f;
+      --bad: #8a3324;
+      --none: #6b6456;
+      font-family: 'Iowan Old Style', 'Palatino Linotype', Georgia, 'Times New Roman', serif;
+      background: var(--parchment);
+      color: var(--ink);
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 56px 48px 40px;
+      line-height: 1.65;
+      border: 1px solid var(--parchment-dark);
+      box-shadow: 0 0 0 6px #fff, 0 8px 30px rgba(28,35,51,0.15);
+    }
+
+    div.customOuterWrapper .customCaseHeader {
+      border-bottom: 3px double var(--gold-deep);
+      padding-bottom: 28px;
+      margin-bottom: 44px;
+    }
+
+    div.customOuterWrapper .customCaseNumber {
+      font-family: 'Courier New', monospace;
+      font-size: 12px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold-deep);
+      margin-bottom: 14px;
+    }
+
+    div.customOuterWrapper .customCaseTitle {
+      font-size: 34px;
+      font-weight: 700;
+      line-height: 1.2;
+      margin: 0 0 22px 0;
+      color: var(--ink);
+      letter-spacing: -0.01em;
+    }
+
+    div.customOuterWrapper .customCaseMeta {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      font-size: 14.5px;
+      color: var(--ink-soft);
+      margin-bottom: 20px;
+    }
+
+    div.customOuterWrapper .customCaseMetaRow span {
+      display: inline-block;
+      min-width: 84px;
+      font-family: 'Courier New', monospace;
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--gold-deep);
+      margin-right: 10px;
+    }
+
+    div.customOuterWrapper .customCaseIntro {
+      font-size: 16px;
+      font-style: italic;
+      color: var(--ink-soft);
+      margin: 22px 0 0 0;
+      max-width: 68ch;
+    }
+
+    div.customOuterWrapper .customExhibit {
+      position: relative;
+      margin: 0 0 46px 0;
+      padding: 6px 0 6px 26px;
+      border-left: 2px solid var(--parchment-dark);
+    }
+
+    div.customOuterWrapper .customExhibitTab {
+      display: inline-block;
+      background: var(--red-tab);
+      color: #f2ede2;
+      font-family: 'Courier New', monospace;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 0 3px 3px 0;
+      margin-left: -28px;
+      margin-bottom: 14px;
+      box-shadow: 2px 2px 0 rgba(28,35,51,0.15);
+    }
+
+    div.customOuterWrapper .customExhibit h2 {
+      font-size: 23px;
+      margin: 0 0 14px 0;
+      color: var(--ink);
+      font-weight: 700;
+    }
+
+    div.customOuterWrapper .customExhibit p {
+      font-size: 15.5px;
+      color: var(--ink-soft);
+      margin: 0 0 14px 0;
+    }
+
+    div.customOuterWrapper .customVerdictChip {
+      display: inline-block;
+      font-family: 'Courier New', monospace;
+      font-size: 12px;
+      letter-spacing: 0.04em;
+      padding: 5px 13px;
+      border-radius: 3px;
+      margin-bottom: 16px;
+      border: 1px solid transparent;
+    }
+
+    div.customOuterWrapper .customVerdictGood {
+      color: var(--good);
+      border-color: var(--good);
+      background: rgba(47,107,79,0.08);
+    }
+
+    div.customOuterWrapper .customVerdictBad {
+      color: var(--bad);
+      border-color: var(--bad);
+      background: rgba(138,51,36,0.08);
+    }
+
+    div.customOuterWrapper .customVerdictNone {
+      color: var(--none);
+      border-color: var(--none);
+      background: rgba(107,100,86,0.08);
+    }
+
+    div.customOuterWrapper .customToolList,
+    div.customOuterWrapper .customPlusList,
+    div.customOuterWrapper .customGapList {
+      list-style: none;
+      margin: 0 0 14px 0;
+      padding: 0;
+    }
+
+    div.customOuterWrapper .customToolList li {
+      padding: 12px 0;
+      border-top: 1px solid var(--parchment-dark);
+    }
+
+    div.customOuterWrapper .customToolList li:last-child {
+      border-bottom: 1px solid var(--parchment-dark);
+    }
+
+    div.customOuterWrapper .customToolName {
+      display: block;
+      font-weight: 700;
+      font-size: 15px;
+      color: var(--ink);
+      margin-bottom: 4px;
+    }
+
+    div.customOuterWrapper .customToolNote {
+      display: block;
+      font-size: 14.5px;
+      color: var(--ink-soft);
+    }
+
+    div.customOuterWrapper .customPlusList li,
+    div.customOuterWrapper .customGapList li {
+      position: relative;
+      padding: 0 0 12px 22px;
+      font-size: 15px;
+      color: var(--ink-soft);
+    }
+
+    div.customOuterWrapper .customPlusList li::before {
+      content: "+";
+      position: absolute;
+      left: 0;
+      color: var(--good);
+      font-weight: 700;
+    }
+
+    div.customOuterWrapper .customGapList li::before {
+      content: "\2013";
+      position: absolute;
+      left: 0;
+      color: var(--bad);
+      font-weight: 700;
+    }
+
+    div.customOuterWrapper .customPlusList strong,
+    div.customOuterWrapper .customGapList strong,
+    div.customOuterWrapper .customExhibit p strong {
+      color: var(--ink);
+    }
+
+    div.customOuterWrapper .customTakeaway {
+      background: var(--parchment-dark);
+      border-left: 3px solid var(--gold);
+      padding: 14px 18px;
+      font-size: 14.5px;
+      color: var(--ink);
+      margin-top: 10px;
+    }
+
+    div.customOuterWrapper .customIdeaGrid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-top: 8px;
+    }
+
+    div.customOuterWrapper .customIdeaCard {
+      background: #fff;
+      border: 1px solid var(--parchment-dark);
+      border-top: 3px solid var(--gold);
+      padding: 18px 20px;
+    }
+
+    div.customOuterWrapper .customIdeaCard h3 {
+      font-size: 15.5px;
+      margin: 0 0 8px 0;
+      color: var(--ink);
+    }
+
+    div.customOuterWrapper .customIdeaCard p {
+      font-size: 14px;
+      color: var(--ink-soft);
+      margin: 0;
+    }
+
+    div.customOuterWrapper .customToolGrid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin: 0 0 16px 0;
+    }
+
+    div.customOuterWrapper .customToolGridItem {
+      background: #fff;
+      border: 1px solid var(--parchment-dark);
+      padding: 10px 14px;
+      font-size: 13.5px;
+      color: var(--ink-soft);
+    }
+
+    div.customOuterWrapper .customToolGridItem b {
+      color: var(--ink);
+      display: block;
+      font-size: 14px;
+      margin-bottom: 2px;
+    }
+
+    div.customOuterWrapper .customRefFlag {
+      display: inline-block;
+      font-family: 'Courier New', monospace;
+      font-size: 11.5px;
+      background: rgba(138,51,36,0.1);
+      color: var(--bad);
+      padding: 2px 8px;
+      border-radius: 3px;
+      margin: 2px 6px 2px 0;
+    }
+
+    div.customOuterWrapper .customCaseFooter {
+      margin-top: 50px;
+      padding-top: 20px;
+      border-top: 1px solid var(--parchment-dark);
+      font-size: 12.5px;
+      font-style: italic;
+      color: var(--none);
+      text-align: center;
+    }
+
+    @media (max-width: 640px) {
+      div.customOuterWrapper {
+        padding: 34px 22px;
+      }
+      div.customOuterWrapper .customCaseTitle {
+        font-size: 26px;
+      }
+      div.customOuterWrapper .customIdeaGrid,
+      div.customOuterWrapper .customToolGrid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+
+  <header class="customCaseHeader">
+    <div class="customCaseNumber">Review No. 2026/08&nbsp;&mdash;&nbsp;Legal Tech Literature</div>
+    <h1 class="customCaseTitle">The Role of AI Technology for Legal Research and Decision Making</h1>
+    <div class="customCaseMeta">
+      <div class="customCaseMetaRow"><span>Authors</span>Md. Shahin Kabir, Mohammad Nazmul Alam, Jaharna Rafi Chowdhury</div>
+      <div class="customCaseMetaRow"><span>Published</span>IRJET, Vol. 10, Issue 07, July 2023</div>
+      <div class="customCaseMetaRow"><span>Method</span>Narrative literature review + vendor product catalog (no original study)</div>
+    </div>
+    <p class="customCaseIntro">Filed as a companion review to the 2019 IJLSI paper on the same subject. Same exhibit format &mdash; seven sections, closing with what's usable for a live build.</p>
+  </header>
+
+  <section class="customExhibit" id="architecture">
+    <div class="customExhibitTab">Exhibit A</div>
+    <h2>Architecture</h2>
+    <div class="customVerdictChip customVerdictNone">Not applicable &mdash; a catalog, not a system</div>
+    <p>No system is proposed or built. Section III organizes existing commercial tools into three functional buckets &mdash; <em>machine learning for legal research</em>, <em>expert systems/DSS for decision-making</em>, and <em>NLP for document review</em> &mdash; and under that umbrella lists ten vendor products for due diligence and contract review (Kira Systems, LEVERTON, eBrevia, JPMorgan COIN, ThoughtRiver, LawGeex, Legal Robot, ROSS Intelligence, Casetext CARA) plus Lex Machina for analytics. That three-bucket taxonomy is the closest thing to an "architecture" in the paper &mdash; useful as a category map, not as a design.</p>
+    <div class="customToolGrid">
+      <div class="customToolGridItem"><b>Research layer</b>ML + predictive analytics (case outcome prediction, precedent retrieval)</div>
+      <div class="customToolGridItem"><b>Decision layer</b>Expert systems / DSS (rule-based recommendations, risk evaluation)</div>
+      <div class="customToolGridItem"><b>Document layer</b>NLP + eDiscovery (extraction, summarization, clause flagging)</div>
+    </div>
+    <div class="customTakeaway">Useful as a three-layer mental model to scope a product roadmap &mdash; not as a technical blueprint. No data flow, model choice, or system boundary is ever specified for any of the ten products named.</div>
+  </section>
+
+  <section class="customExhibit" id="techstack">
+    <div class="customExhibitTab">Exhibit B</div>
+    <h2>How outdated is the tech stack?</h2>
+    <div class="customVerdictChip customVerdictBad">Outdated at time of publication, not just by 2026 standards</div>
+    <p>This is the more damaging finding for this paper specifically: it was published in <strong>July 2023</strong>, eight months after ChatGPT's public release and well into the generative-AI wave sweeping legal tech (Harvey, CoCounsel/GPT-4, Casetext's own CARA A.I. relaunch). Yet the paper contains <strong>zero references to generative AI, large language models, or transformers</strong> &mdash; the entire vocabulary is pre-LLM: "machine learning," "NLP," "expert systems," "decision support systems."</p>
+    <p>Individual product references are stale in the same way as the 2019 paper &mdash; in places, almost word-for-word the same:</p>
+    <ul class="customToolList">
+      <li><span class="customToolName">ROSS Intelligence</span><span class="customToolNote">Described in the present tense as actively supporting BakerHostetler across "27 terabytes of data" &mdash; the same anecdote circulating since 2017. ROSS Intelligence shut down in January 2021, over two years before this paper's publication date, after losing a copyright suit brought by Thomson Reuters.</span></li>
+      <li><span class="customToolName">Katz et al. (2017) &amp; Aletras et al. (2016)</span><span class="customToolNote">The two headline accuracy figures (70.2% for SCOTUS outcome prediction, 79% for ECtHR decisions) are pre-transformer statistical/feature-based ML studies, now six to seven years old at time of citation, and never updated against any LLM-based benchmark.</span></li>
+      <li><span class="customToolName">LawGeex claims</span><span class="customToolNote">90% cost reduction / 80% faster review &mdash; the paper itself flags that "detailed case studies supporting these claims are not readily available," which is honest, but the claim is still repeated as a headline figure.</span></li>
+      <li><span class="customToolName">Legal Robot</span><span class="customToolNote">Described as "still in beta" &mdash; a 2018-era status carried forward unexamined into a 2023 paper.</span></li>
+    </ul>
+    <p>Net effect: a paper published squarely in the generative-AI moment reads as if it were frozen in the 2018&ndash;2020 "legal AI 1.0" generation (search, classify, extract) with no acknowledgment that the ground had already shifted under it.</p>
+  </section>
+
+  <section class="customExhibit" id="testing">
+    <div class="customExhibitTab">Exhibit C</div>
+    <h2>How was the solution tested?</h2>
+    <div class="customVerdictChip customVerdictBad">No testing &mdash; secondary citation only</div>
+    <p>There is no original experiment, benchmark, or user study in this paper. Every performance figure &mdash; Katz et al.'s 70.2%, Aletras et al.'s 79%, Kira's "up to 90% faster," eBrevia's "50 documents a minute, 10% more accurate than manual review," JPMorgan COIN's "36,000 hours saved," LawGeex's "90% cost reduction" &mdash; is lifted directly from vendor marketing pages or prior academic papers, with no independent replication, no methodology check, and in most cases no primary source beyond a company website.</p>
+    <p>The paper is transparent about this in one place (LawGeex's unverifiable case studies) but does not apply the same scrutiny to the other nine tools listed, which is an inconsistent standard of evidence within the same section.</p>
+  </section>
+
+  <section class="customExhibit" id="datasets">
+    <div class="customExhibitTab">Exhibit D</div>
+    <h2>What datasets were used?</h2>
+    <div class="customVerdictChip customVerdictNone">None &mdash; only cited, not disclosed</div>
+    <p>The authors used no dataset of their own. The two datasets that appear are entirely borrowed from cited third-party studies and are never described in this paper: Katz et al.'s Supreme Court corpus and Aletras et al.'s European Court of Human Rights case corpus. Neither size, time range, feature set, nor train/test split is restated here &mdash; a reader has to go to the original 2016/2017 papers to know what was actually tested.</p>
+  </section>
+
+  <section class="customExhibit" id="plus">
+    <div class="customExhibitTab">Exhibit E</div>
+    <h2>Plus points of the research</h2>
+    <div class="customVerdictChip customVerdictGood">A useful, if dated, product landscape</div>
+    <ul class="customPlusList">
+      <li><strong>Widest product catalog of the two papers reviewed.</strong> Ten named due-diligence/contract-review vendors with specific claimed metrics is more concrete market coverage than most legal-AI surveys of its era.</li>
+      <li><strong>Clean three-layer taxonomy</strong> (research / decision-making / document review) that maps reasonably well onto how legal-AI products are still segmented today.</li>
+      <li><strong>Appropriate skepticism in at least one place</strong> &mdash; explicitly noting LawGeex's efficiency claims lack accessible supporting case studies, rather than repeating vendor numbers uncritically everywhere.</li>
+      <li><strong>Dedicated ethics and liability section</strong> (Section V) that names concrete legal questions &mdash; who is liable for an AI error, what standards should regulate legal AI &mdash; rather than a vague gesture at "responsible use."</li>
+      <li><strong>In-house enterprise example (JPMorgan COIN)</strong> is a genuinely useful data point: a large institution build vs. buy decision, with a stated internal ROI (36,000 hours/year), which the vendor-catalog entries lack.</li>
+    </ul>
+  </section>
+
+  <section class="customExhibit" id="gaps">
+    <div class="customExhibitTab">Exhibit F</div>
+    <h2>Gaps in the research</h2>
+    <div class="customVerdictChip customVerdictBad">Significant &mdash; content and editorial gaps</div>
+    <ul class="customGapList">
+      <li><strong>No generative AI / LLM coverage</strong> despite a July 2023 publish date &mdash; the single largest gap, given how much the field had already moved by then (see Exhibit B).</li>
+      <li><strong>Reference list quality is poor.</strong> References [10] and [11] are duplicates (identical Verheij 2020 citation listed twice). Reference [19] is dated "1994" for a paper about IoT that could not plausibly predate the technology it discusses &mdash; almost certainly a typo for 2019 or later, left uncorrected.</li>
+      <li><strong>Two reference entries render as literal "[????]"</strong> in the published PDF (the Kabir &amp; Alam IoT/AI law-enforcement review, and the Alam/Paul/Chowdhury security-engineering paper) &mdash; a formatting error that made it past peer review and typesetting.</li>
+      <li><strong>Citation stuffing / self-citation pattern.</strong> Of 26 references, at least a dozen are prior papers by the same author cluster (Alam, Kabir, and co-authors) on unrelated topics &mdash; restaurant-review sentiment analysis, IoT forensics, malware detection, golden-visa immigration programs, job-satisfaction studies, civil-litigation delay in Bangladesh. None of these are engaged with substantively in the body text; they appear to pad the reference count rather than support specific claims.</li>
+      <li><strong>Vendor claims reproduced unevenly.</strong> Only LawGeex's numbers are flagged as unverified; Kira's "40%/90% faster," eBrevia's "10% more accurate," and COIN's "36,000 hours" are presented with the same confidence but no equivalent caveat.</li>
+      <li><strong>No original contribution.</strong> The paper synthesizes existing public information (vendor websites, two older academic studies) without a novel framework, comparison methodology, or evaluation criteria of its own.</li>
+    </ul>
+    <div class="customRefFlag">Ref [10] = Ref [11]</div>
+    <div class="customRefFlag">Ref [19] dated 1994</div>
+    <div class="customRefFlag">2 refs unlabeled [????]</div>
+  </section>
+
+  <section class="customExhibit" id="ideas">
+    <div class="customExhibitTab">Exhibit G</div>
+    <h2>What to take into "Your Legal"</h2>
+    <div class="customVerdictChip customVerdictGood">Concrete, transferable ideas</div>
+    <div class="customIdeaGrid">
+      <div class="customIdeaCard">
+        <h3>Adopt the three-layer product map</h3>
+        <p>Research (find/predict) &rarr; Decision support (recommend/flag risk) &rarr; Document review (extract/summarize) is a clean way to scope "Your Legal's" feature set and explain it to buyers who already think in these categories from evaluating Kira-, LawGeex-, or Lex Machina-style tools.</p>
+      </div>
+      <div class="customIdeaCard">
+        <h3>Publish real numbers, and say so when you can't</h3>
+        <p>This paper's own move &mdash; flagging that LawGeex's 90%/80% claims lack accessible case studies &mdash; is exactly the standard to hold your own product to. Every efficiency claim "Your Legal" makes publicly should link to a real, reproducible case study; if you can't substantiate a number yet, say "early data suggests" rather than a bare percentage.</p>
+      </div>
+      <div class="customIdeaCard">
+        <h3>Report prediction accuracy honestly</h3>
+        <p>Katz et al.'s 70.2% and Aletras et al.'s 79% are respectable but clearly imperfect. If "Your Legal" ships any outcome-prediction feature, show accuracy, confidence intervals, and the case types it was validated on &mdash; don't imply certainty a underlying model can't support.</p>
+      </div>
+      <div class="customIdeaCard">
+        <h3>Differentiate explicitly on being LLM-native</h3>
+        <p>Because this 2023 paper (and its 2019 counterpart) never mentions generative AI, it's a useful artifact to show prospects: "legal AI 1.0" was search-and-classify; "Your Legal" is built on retrieval-augmented generation and reasoning over their actual documents. Use this gap as a positioning wedge in sales material.</p>
+      </div>
+      <div class="customIdeaCard">
+        <h3>Consider a build-vs-buy enterprise tier</h3>
+        <p>JPMorgan's in-house COIN system (36,000 hours saved/year) shows large institutions sometimes prefer building internally. An enterprise "Your Legal" tier that offers a customizable, self-hosted or fine-tunable deployment could capture that segment instead of losing it to internal build decisions.</p>
+      </div>
+      <div class="customIdeaCard">
+        <h3>Keep your own citation hygiene tight</h3>
+        <p>If "Your Legal" ever publishes a whitepaper or research page to support its marketing, avoid this paper's pitfalls &mdash; duplicate references, unrelated self-citations, unlabeled entries. Buyers and journalists checking your claims will notice, and it undercuts trust exactly where legal buyers are most sensitive to rigor.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="customCaseFooter">Prepared as an independent critique for internal product research. Not legal advice.</footer>
+
+</div>
